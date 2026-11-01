@@ -49,18 +49,15 @@
 
   /* Reveal on scroll: content is visible without JS; only lifted in when observed */
   var revealTargets = document.querySelectorAll(
-    ".section-head, .problem__text, .step, .services__top, .services__list li, .services__photo, .person, .faq__intro, .faq__list, .book__intro, .form"
+    ".section-head, .problem__text, .building-card, .service-chips, .about-points article, .step, .person, .faq__intro, .faq__list, .book__intro, .form"
   );
-  var estimate = document.querySelector("[data-estimate]");
 
-  if (!("IntersectionObserver" in window) || reduceMotion) {
-    if (estimate) estimate.classList.add("is-in");
-  } else {
+  if ("IntersectionObserver" in window && !reduceMotion) {
     revealTargets.forEach(function (el) {
       el.setAttribute("data-reveal", "");
     });
     // Stagger siblings inside the same list
-    document.querySelectorAll(".steps__list, .services__list, .people").forEach(function (list) {
+    document.querySelectorAll(".steps__list, .building-cards, .about-points, .people").forEach(function (list) {
       Array.prototype.forEach.call(list.children, function (child, i) {
         child.style.transitionDelay = Math.min(i * 90, 360) + "ms";
       });
@@ -76,7 +73,6 @@
     }, { rootMargin: "0px 0px -12% 0px", threshold: 0.12 });
 
     revealTargets.forEach(function (el) { io.observe(el); });
-    if (estimate) io.observe(estimate);
   }
 
   /* Year */
