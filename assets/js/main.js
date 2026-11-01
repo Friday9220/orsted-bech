@@ -49,7 +49,7 @@
 
   /* Reveal on scroll: content is visible without JS; only lifted in when observed */
   var revealTargets = document.querySelectorAll(
-    ".section-head, .problem__text, .building-card, .service-chips, .about-points article, .step, .person, .faq__intro, .faq__list, .book__intro, .form"
+    ".section-head, .problem__text, .building-card, .services-line, .about__text, .about-points li, .step, .person, .faq__intro, .faq__list, .book__intro, .form"
   );
 
   if ("IntersectionObserver" in window && !reduceMotion) {
